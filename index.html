@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Suyash Gupta — Java Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06060E;--bg2:#0D0D1A;--bg3:#111124;
+  --accent:#4B8BFF;--accent2:#7FACFF;--gold:#F0B429;
+  --text:#E8E8F0;--muted:#7A7A9A;--border:#1E1E35;
+  --card:#0F0F20;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 4rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(6,6,14,0.85);border-bottom:1px solid rgba(75,139,255,0.08)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;color:var(--text)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(75,139,255,0.12) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(127,172,255,0.07) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:900px;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(75,139,255,0.1);border:1px solid rgba(75,139,255,0.25);border-radius:100px;padding:.35rem 1rem;font-size:.78rem;font-weight:500;color:var(--accent2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp .6s ease both}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;animation:fadeUp .7s .1s ease both}
+h1 .line2{color:var(--accent);display:block}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:560px;margin:1.5rem 0 2.5rem;line-height:1.7;animation:fadeUp .7s .2s ease both;font-weight:300}
+.hero-sub strong{color:var(--text);font-weight:500}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn{padding:.75rem 2rem;border-radius:8px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;font-family:'Outfit',sans-serif}
+.btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.btn-primary:hover{background:#3a7aff;transform:translateY(-2px);box-shadow:0 8px 30px rgba(75,139,255,.35)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);animation:fadeUp .7s .4s ease both}
+.stat-item .num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text)}
+.stat-item .num span{color:var(--accent)}
+.stat-item .label{font-size:.8rem;color:var(--muted);font-weight:400;margin-top:.2rem}
+
+/* SECTIONS */
+section{padding:6rem 4rem;max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:.75rem;font-weight:600;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
+h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem}
+h2 em{color:var(--accent);font-style:normal}
+.section-sub{color:var(--muted);max-width:520px;margin-bottom:3rem;font-size:.95rem;font-weight:300}
+.divider-line{width:100%;height:1px;background:var(--border);margin:0 4rem;max-width:calc(100% - 8rem)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:all .25s}
+.skill-card:hover{border-color:rgba(75,139,255,.4);transform:translateY(-3px)}
+.skill-cat{font-size:.7rem;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:.25rem .65rem;font-size:.78rem;color:var(--text);font-weight:400}
+.skill-tag.hot{border-color:rgba(75,139,255,.3);color:var(--accent2);background:rgba(75,139,255,.08)}
+
+/* PROJECTS */
+.projects-grid{display:grid;gap:1.25rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;transition:all .3s;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .3s}
+.project-card:hover{border-color:rgba(75,139,255,.3);transform:translateY(-3px)}
+.project-card:hover::before{opacity:1}
+.project-card.personal{border-color:rgba(240,180,41,.2)}
+.project-card.personal::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.proj-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.proj-label.ai{color:var(--gold)}
+.proj-name{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.proj-desc{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;font-weight:300}
+.proj-metrics{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.metric{background:rgba(75,139,255,.08);border:1px solid rgba(75,139,255,.2);border-radius:6px;padding:.3rem .75rem;font-size:.78rem;color:var(--accent2);font-weight:500}
+.metric.gold{background:rgba(240,180,41,.08);border-color:rgba(240,180,41,.2);color:var(--gold)}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.4rem}
+.stack-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:5px;padding:.2rem .55rem;font-size:.72rem;color:var(--muted)}
+.proj-date{font-size:.78rem;color:var(--muted);font-weight:400;white-space:nowrap;text-align:right}
+.proj-date span{display:block;font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+
+/* EXPERIENCE */
+.exp-timeline{position:relative;padding-left:2rem}
+.exp-timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:linear-gradient(to bottom,var(--accent),transparent)}
+.exp-item{position:relative;margin-bottom:2.5rem;padding-left:1.5rem}
+.exp-item::before{content:'';position:absolute;left:-2.4rem;top:.45rem;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(75,139,255,.2)}
+.exp-meta{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;flex-wrap:wrap;gap:.5rem}
+.exp-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
+.exp-company{color:var(--accent);font-size:.88rem;font-weight:500;margin-top:.1rem}
+.exp-date{font-size:.78rem;color:var(--muted);background:var(--bg3);border:1px solid var(--border);padding:.25rem .75rem;border-radius:100px}
+.exp-bullets{list-style:none;margin-top:.75rem}
+.exp-bullets li{font-size:.87rem;color:var(--muted);line-height:1.65;margin-bottom:.4rem;padding-left:1rem;position:relative;font-weight:300}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.75rem}
+
+/* AWARDS */
+.awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.award-card{background:var(--card);border:1px solid rgba(240,180,41,.15);border-radius:12px;padding:1.5rem;transition:all .25s;position:relative;overflow:hidden}
+.award-card::after{content:'★';position:absolute;right:1rem;top:1rem;font-size:1.5rem;color:rgba(240,180,41,.15)}
+.award-card:hover{border-color:rgba(240,180,41,.35);transform:translateY(-3px)}
+.award-year{font-size:.72rem;font-weight:600;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.award-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.award-org{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+.award-desc{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.55}
+
+/* CONTACT */
+.contact-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center,rgba(75,139,255,.05) 0%,transparent 60%);pointer-events:none}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.contact-link{display:flex;align-items:center;gap:.6rem;padding:.75rem 1.5rem;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);font-size:.88rem;font-weight:500;transition:all .25s;background:rgba(255,255,255,.02)}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);background:rgba(75,139,255,.06);transform:translateY(-2px)}
+.contact-link svg{width:16px;height:16px;flex-shrink:0}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem 4rem;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:7rem 1.5rem 3rem}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap}
+  section{padding:4rem 1.5rem}
+  .project-card{grid-template-columns:1fr}
+  .proj-date{text-align:left}
+  .contact-box{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">SG<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1>
+      Suyash Gupta
+      <span class="line2">Full Stack &amp; AI Engineer</span>
+    </h1>
+    <p class="hero-sub">
+      Building <strong>enterprise-scale systems</strong> with Java, Spring Boot &amp; React —
+      and integrating <strong>Agentic AI</strong> into production backends.
+      3+ years across banking, mobility &amp; gov-tech.
+    </p>
+    <div class="hero-ctas">
+      <a href="mailto:suyash2000.sg@gmail.com" class="btn btn-primary">Get in touch →</a>
+      <a href="https://linkedin.com/in/suyash2000" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="https://github.com/suyash2000" target="_blank" class="btn btn-outline">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="num">3<span>+</span></div><div class="label">Years Experience</div></div>
+      <div class="stat-item"><div class="num">3<span>M+</span></div><div class="label">Users Impacted</div></div>
+      <div class="stat-item"><div class="num">4<span>×</span></div><div class="label">Award Winner</div></div>
+      <div class="stat-item"><div class="num">3</div><div class="label">Domains Delivered</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider-line"/>
+
+<!-- SKILLS -->
+<section id="about">
+  <div class="section-eyebrow reveal">Technical Skills</div>
+  <h2 class="reveal">What I <em>build</em> with</h2>
+  <p class="section-sub reveal">End-to-end capability from distributed backend systems to React frontends, DevOps pipelines, and AI integration.</p>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-cat">Backend</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">Java 8–21</span>
+        <span class="skill-tag hot">Spring Boot 3.x</span>
+        <span class="skill-tag">Spring Security</span>
+        <span class="skill-tag">Microservices</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag hot">Kafka</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Frontend</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">React.js</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">Node.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Databases</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">Elasticsearch</span>
+        <span class="skill-tag hot">Redis</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Cassandra</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">Kubernetes</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Prometheus</span>
+        <span class="skill-tag">Grafana</span>
+      </div>
+    </div>
+    <div class="skill-card" style="border-color:rgba(240,180,41,.2)">
+      <div class="skill-cat" style="color:var(--gold)">Agentic AI</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">OpenAI API</span>
+        <span class="skill-tag hot">Claude API</span>
+        <span class="skill-tag hot">LLM Integration</span>
+        <span class="skill-tag">Agentic Workflows</span>
+        <span class="skill-tag">Prompt Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-line"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow reveal">Projects</div>
+  <h2 class="reveal">Things I've <em>shipped</em></h2>
+  <p class="section-sub reveal">Real-world systems serving millions of users across banking, mobility, and government domains.</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card personal reveal">
+      <div>
+        <div class="proj-label ai">🤖 Personal · AI Project</div>
+        <div class="proj-name">Smart Document Q&A</div>
+        <div class="proj-desc">A Spring Boot service that accepts documents and answers natural language queries using OpenAI/Claude API — with chunking for large inputs, structured response validation, retry logic, and a React frontend for seamless interaction.</div>
+        <div class="proj-metrics">
+          <span class="metric gold">Agentic AI</span>
+          <span class="metric gold">LLM Integration</span>
+          <span class="metric gold">In Progress</span>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">Java 17</span><span class="stack-tag">Spring Boot 3.x</span><span class="stack-tag">OpenAI API</span><span class="stack-tag">React.js</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Docker</span>
+        </div>
+      </div>
+      <div class="proj-date"><span>2026</span>In Progress</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="proj-label">Infosys · FinTech</div>
+        <div class="proj-name">Westpac Banking APIs</div>
+        <div class="proj-desc">Modernised core banking APIs for Westpac Australia — integrated LLM APIs into Spring Boot services for AI-assisted workflows, led platform upgrades across Business Lending APIs and resolved compliance issues achieving zero critical defects post-deployment.</div>
+        <div class="proj-metrics">
+          <span class="metric">0 Critical Defects</span>
+          <span class="metric">AI Workflows</span>
+          <span class="metric">Java 8→21</span>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">Java 21</span><span class="stack-tag">Spring Boot 3.x</span><span class="stack-tag">OpenAI API</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">Jenkins</span>
+        </div>
+      </div>
+      <div class="proj-date"><span>2025</span>Mar – Present</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="proj-label">Tarento · Mobility</div>
+        <div class="proj-name">Ola Electric</div>
+        <div class="proj-desc">Orchestrated cloud migration for 1M+ electric scooters — chose Kafka over REST for device event streaming to handle concurrent spikes with zero message loss, reduced latency by 40% and manual workflows by 60%.</div>
+        <div class="proj-metrics">
+          <span class="metric">1M+ Devices</span>
+          <span class="metric">40% Latency ↓</span>
+          <span class="metric">60% Manual Effort ↓</span>
+          <span class="metric">25–30% Perf ↑</span>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">Java 17</span><span class="stack-tag">Spring Boot</span><span class="stack-tag">Kafka</span><span class="stack-tag">React.js</span><span class="stack-tag">Docker</span><span class="stack-tag">Kubernetes</span>
+        </div>
+      </div>
+      <div class="proj-date"><span>2024</span>Aug – Feb '25</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="proj-label">Tarento · Gov-tech</div>
+        <div class="proj-name">NSDC – Skill India Digital Hub</div>
+        <div class="proj-desc">Chose Elasticsearch over PostgreSQL after benchmarking — achieved sub-100ms response on 1M+ records vs 800ms+ SQL. Built registration platform achieving 1M+ sign-ups in a month. Redis session management lowered server load by 35%.</div>
+        <div class="proj-metrics">
+          <span class="metric">1M+ Users</span>
+          <span class="metric">70% Downtime ↓</span>
+          <span class="metric">3× Throughput</span>
+          <span class="metric">45% Accuracy ↑</span>
+          <span class="metric">35% Load ↓</span>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">Java 11</span><span class="stack-tag">Spring Boot</span><span class="stack-tag">Elasticsearch</span><span class="stack-tag">Redis</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Kafka</span><span class="stack-tag">React.js</span>
+        </div>
+      </div>
+      <div class="proj-date"><span>2023</span>Jun – Jul '24</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider-line"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-eyebrow reveal">Experience</div>
+  <h2 class="reveal">Where I've <em>worked</em></h2>
+  <p class="section-sub reveal">3+ years across tier-1 service companies, delivering across banking, mobility, and government sectors.</p>
+  <div class="exp-timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-company">Infosys Limited</div>
+        </div>
+        <div class="exp-date">Mar 2025 – Present</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Modernised core banking APIs at Westpac, improving runtime performance and reducing deployment failures across Business Lending services</li>
+        <li>Integrated LLM APIs (OpenAI/Claude) into Spring Boot microservices, enabling AI-assisted banking workflows</li>
+        <li>Resolved high-priority VITs and compliance issues — zero critical defects in post-deployment reviews</li>
+        <li>Delivering in Agile sprints with cross-functional teams on production-grade microservices</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-company">Tarento Technologies Pvt. Ltd.</div>
+        </div>
+        <div class="exp-date">Aug 2022 – Feb 2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Delivered full stack features (Java + React) for Ola Electric and NSDC SIDH — high-traffic, mission-critical platforms</li>
+        <li>Architected search and registration systems serving 3M+ cumulative users across projects</li>
+        <li>Made key system design decisions: Kafka over REST for async streaming, Elasticsearch over SQL for search, Redis for distributed sessions</li>
+        <li>Consistently recognised with 3 awards across 2023–2024 for delivery quality and innovation</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider-line"/>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-eyebrow reveal">Recognition</div>
+  <h2 class="reveal">Awards &amp; <em>Honours</em></h2>
+  <p class="section-sub reveal">4 awards across 3 years — consistently recognised for delivery quality, innovation, and impact.</p>
+  <div class="awards-grid">
+    <div class="award-card reveal">
+      <div class="award-year">Feb 2026 · Infosys</div>
+      <div class="award-title">Insta Award</div>
+      <div class="award-org">Infosys Limited</div>
+      <div class="award-desc">Recognised for strong dedication, ownership, and consistently delivering high-quality output with speed and professionalism.</div>
+    </div>
+    <div class="award-card reveal">
+      <div class="award-year">Q3 2024 · Tarento</div>
+      <div class="award-title">Spot Award</div>
+      <div class="award-org">Tarento Technologies</div>
+      <div class="award-desc">Recognised for creating a high-efficiency toolkit that streamlined user registration experiences on the PMV platform.</div>
+    </div>
+    <div class="award-card reveal">
+      <div class="award-year">Q4 2023 · Tarento</div>
+      <div class="award-title">Recognition Award</div>
+      <div class="award-org">Tarento Technologies</div>
+      <div class="award-desc">Led registration flow on Skill India Digital Hub — achieved 1M+ user sign-ups within a single month of launch.</div>
+    </div>
+    <div class="award-card reveal">
+      <div class="award-year">Q2 2023 · Tarento</div>
+      <div class="award-title">Team Impact Award</div>
+      <div class="award-org">Tarento Technologies</div>
+      <div class="award-desc">Delivered high-performance Elasticsearch Search API that significantly boosted portal functionality and user experience.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-line"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow reveal">Contact</div>
+  <div class="contact-box reveal">
+    <h2 style="margin-bottom:.75rem">Let's <em>work</em> together</h2>
+    <p style="color:var(--muted);max-width:460px;margin:0 auto;font-size:.95rem;font-weight:300">Open to full-time roles in Java Full Stack, Backend, or AI-integrated engineering. Based in India — open to remote and hybrid.</p>
+    <div class="contact-links">
+      <a href="mailto:suyash2000.sg@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        suyash2000.sg@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/suyash2000" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/suyash2000
+      </a>
+      <a href="https://github.com/suyash2000" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        github.com/suyash2000
+      </a>
+      <a href="tel:+918817694170" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +91 88176 94170
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with care · Suyash Gupta © 2026</p>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.12});
+reveals.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
