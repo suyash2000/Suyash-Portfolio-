@@ -248,6 +248,27 @@ hr.divider-line{border:none;border-top:1px solid var(--dim);margin:0 4rem 0 100p
   #chat-fab{right:1rem;bottom:1rem}
   hr.divider-line{margin:0 1.5rem 0 60px}
 }
+
+/* WRITINGS */
+.writings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.writing-card{background:var(--bg2);border:1px solid var(--dim);padding:1.75rem;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:.75rem;transition:all .3s;position:relative;overflow:hidden;cursor:none}
+.writing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s}
+.writing-card:hover{border-color:rgba(0,255,209,.3);transform:translateY(-4px)}
+.writing-card:hover::before{opacity:1}
+.writing-card.pinned{border-color:rgba(0,255,209,.2)}
+.writing-card.pinned::before{opacity:.4}
+.wc-top{display:flex;justify-content:space-between;align-items:center}
+.wc-pin{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--cyan);border:1px solid rgba(0,255,209,.3);padding:.2rem .5rem;border-radius:2px}
+.wc-date{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted)}
+.wc-img-wrap{border-radius:3px;overflow:hidden;height:120px;margin:-.25rem 0}
+.wc-img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.7);transition:filter .3s}
+.writing-card:hover .wc-img{filter:brightness(.9) saturate(1)}
+.wc-title{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;color:var(--text)}
+.wc-desc{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);line-height:1.65;flex:1;font-weight:300}
+.wc-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.wc-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;padding:.2rem .55rem;border:1px solid var(--dim);color:var(--muted);border-radius:2px}
+.writing-card:hover .wc-tag{border-color:rgba(0,255,209,.15);color:var(--text)}
+.wc-read{font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;color:var(--cyan);margin-top:.25rem}
 </style>
 </head>
 <body>
@@ -270,6 +291,7 @@ hr.divider-line{border:none;border-top:1px solid var(--dim);margin:0 4rem 0 100p
     <li><a href="#routes">Routes</a></li>
     <li><a href="#log">Log</a></li>
     <li><a href="#milestones-sec">Awards</a></li>
+    <li><a href="#writings">Writings</a></li>
     <li><a href="#signal">Signal</a></li>
   </ul>
   <div class="nav-speed"><span class="speed-val" id="speed-val">000</span> km/h</div>
@@ -412,6 +434,90 @@ hr.divider-line{border:none;border-top:1px solid var(--dim);margin:0 4rem 0 100p
 </section>
 
 <hr class="divider-line"/>
+
+
+<hr class="divider-line"/>
+
+<!-- WRITINGS / MEDIUM -->
+<section id="writings">
+  <div class="section-tag reveal">07 // Transmissions</div>
+  <h2 class="reveal" style="color:var(--text)">Writing &amp;<br/><span style="color:var(--cyan)">knowledge drops</span></h2>
+  <p class="reveal" style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--muted);margin-top:.5rem;margin-bottom:2.5rem;max-width:500px;line-height:1.8">Technical guides on the tools I use every day — Docker, Kafka, Elasticsearch, PostgreSQL, Redis. Published on Medium.</p>
+
+  <div class="writings-grid reveal">
+
+    <a class="writing-card pinned" href="https://medium.com/@suyash2000/setting-up-pgsync-for-synchronizing-postgresql-with-elasticsearch-57bfe241dcad" target="_blank">
+      <div class="wc-top">
+        <span class="wc-pin">📌 PINNED</span>
+        <span class="wc-date">Jul 15, 2024</span>
+      </div>
+      <div class="wc-title">Setting Up pgsync for Synchronizing PostgreSQL with Elasticsearch</div>
+      <div class="wc-desc">A step-by-step guide to install and configure pgsync for real-time sync between PostgreSQL and Elasticsearch — directly from production experience on NSDC SIDH.</div>
+      <div class="wc-tags">
+        <span class="wc-tag">PostgreSQL</span>
+        <span class="wc-tag">Elasticsearch</span>
+        <span class="wc-tag">pgsync</span>
+        <span class="wc-tag">Data Sync</span>
+      </div>
+      <div class="wc-read">READ ON MEDIUM →</div>
+    </a>
+
+    <a class="writing-card" href="https://medium.com/@suyash2000/set-up-mysql-using-docker-34c8501e4edc" target="_blank">
+      <div class="wc-top">
+        <span class="wc-pin" style="color:var(--muted);border-color:var(--dim)">GUIDE</span>
+        <span class="wc-date">Aug 7, 2024</span>
+      </div>
+      <div class="wc-title">Set up MySQL using Docker with docker-compose.yml</div>
+      <div class="wc-desc">Clean, minimal setup guide for spinning up a MySQL instance using Docker Compose — with persistent volumes and environment config.</div>
+      <div class="wc-tags">
+        <span class="wc-tag">MySQL</span>
+        <span class="wc-tag">Docker</span>
+        <span class="wc-tag">docker-compose</span>
+      </div>
+      <div class="wc-read">READ ON MEDIUM →</div>
+    </a>
+
+    <a class="writing-card" href="https://medium.com/@suyash2000/set-up-for-postgresql-elasticsearch-and-redis-using-docker-bde5c0f9cfc0" target="_blank">
+      <div class="wc-top">
+        <span class="wc-pin" style="color:var(--muted);border-color:var(--dim)">GUIDE</span>
+        <span class="wc-date">Jul 18, 2024</span>
+      </div>
+      <div class="wc-title">Set up PostgreSQL, Elasticsearch &amp; Redis using Docker</div>
+      <div class="wc-desc">Full local dev environment setup for the exact stack used in production — PostgreSQL, Elasticsearch, and Redis all running via Docker Compose.</div>
+      <div class="wc-tags">
+        <span class="wc-tag">PostgreSQL</span>
+        <span class="wc-tag">Elasticsearch</span>
+        <span class="wc-tag">Redis</span>
+        <span class="wc-tag">Docker</span>
+      </div>
+      <div class="wc-read">READ ON MEDIUM →</div>
+    </a>
+
+    <a class="writing-card" href="https://medium.com/@suyash2000/compose-kafka-zookeeper-using-docker-6f85145a49b3" target="_blank">
+      <div class="wc-top">
+        <span class="wc-pin" style="color:var(--muted);border-color:var(--dim)">GUIDE</span>
+        <span class="wc-date">Jul 18, 2024</span>
+      </div>
+      <div class="wc-img-wrap">
+        <img src="https://miro.medium.com/v2/resize:fill:320:214/1*rdctb7OKzQM5HXGcR6CZeg.png" alt="Kafka Docker" class="wc-img"/>
+      </div>
+      <div class="wc-title">Compose Kafka &amp; Zookeeper using Docker</div>
+      <div class="wc-desc">Spin up a full Kafka + Zookeeper stack with Docker Compose — includes topic creation, consumer groups, and producer config ready for local dev.</div>
+      <div class="wc-tags">
+        <span class="wc-tag">Kafka</span>
+        <span class="wc-tag">Zookeeper</span>
+        <span class="wc-tag">Docker</span>
+        <span class="wc-tag">Messaging</span>
+      </div>
+      <div class="wc-read">READ ON MEDIUM →</div>
+    </a>
+
+  </div>
+
+  <div class="reveal" style="margin-top:2rem">
+    <a href="https://medium.com/@suyash2000" target="_blank" class="btn btn-ghost" style="font-size:.8rem">VIEW ALL ON MEDIUM ↗</a>
+  </div>
+</section>
 
 <section id="signal">
   <div class="section-tag reveal">06 // Signal</div>
